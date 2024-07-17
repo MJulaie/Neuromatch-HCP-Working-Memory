@@ -5,7 +5,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-HCP_Data/
+data/*
 
 # C extensions
 *.so
