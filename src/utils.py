@@ -2,17 +2,9 @@ import requests
 import tarfile
 from tqdm import tqdm
 from pathlib import Path
+from src.config import load_config
 
-
-# Configuration
-DATA_FILES = [
-    {"name": "hcp_rest.tgz", "url": "https://osf.io/bqp7m/download"},
-    {"name": "hcp_task.tgz", "url": "https://osf.io/s4h8j/download"},
-    {"name": "hcp_covariates.tgz", "url": "https://osf.io/x5p4g/download"},
-    {"name": "atlas.npz", "url": "https://osf.io/j5kuc/download"}
-]
-
-HCP_DIR = Path('..') / 'data'
+config = load_config()
 
 
 def download_file(
@@ -54,8 +46,8 @@ def extract_tgz(
 
 
 def download_and_extract_data(
-        data_dir = Path(HCP_DIR),
-        files = DATA_FILES,
+        data_dir = Path(config["HCP_DIR"]),
+        files = config["DATA_FILES"],
         force_download = False
     ):
     """
@@ -90,3 +82,4 @@ def download_and_extract_data(
                         extract_tgz(file_path, data_dir, progress_bar)
 
     print("All downloads and extractions completed!")
+

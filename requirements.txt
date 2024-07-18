@@ -1,1 +1,6 @@
 jupyterlab
+requests
+tqdm
+nilearn
+numpy
+matplotlib
